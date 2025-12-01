@@ -9,8 +9,9 @@ import (
 )
 
 type Solution struct {
-	dial   int
-	zeroes int
+	dial        int
+	zeroes      int
+	part2Zeroes int
 }
 
 func (s *Solution) Part1(input string) (string, error) {
@@ -22,9 +23,6 @@ func (s *Solution) Part1(input string) (string, error) {
 
 	for _, line := range lines {
 		s.rotateDial(line)
-		if s.dial == 0 {
-			s.zeroes++
-		}
 	}
 
 	return strconv.Itoa(s.zeroes), nil
@@ -32,10 +30,14 @@ func (s *Solution) Part1(input string) (string, error) {
 
 func (s *Solution) Part2(input string) (string, error) {
 	lines := utils.Lines(input)
+	s.part2Zeroes = 0
+	s.dial = 50
 
-	// TODO: Implement Part 2 solution
-	_ = lines
-	return "Not implemented yet", nil
+	for _, line := range lines {
+		s.rotateDial(line)
+	}
+
+	return strconv.Itoa(s.part2Zeroes), nil
 }
 
 func (s *Solution) rotateDial(instruction string) {
@@ -43,11 +45,21 @@ func (s *Solution) rotateDial(instruction string) {
 	var steps int
 	fmt.Sscanf(instruction[1:], "%d", &steps)
 
+	step := 1
 	if direction == 'L' {
-		steps = -steps
+		step = -1
 	}
 
-	s.dial = ((s.dial+steps)%100 + 100) % 100
+	for i := 0; i < steps; i++ {
+		s.dial = ((s.dial+step)%100 + 100) % 100
+		if s.dial == 0 {
+			s.part2Zeroes++
+		}
+	}
+
+	if s.dial == 0 {
+		s.zeroes++
+	}
 
 	log.Println("The dial is rotated " + instruction + " to point at " + strconv.Itoa(s.dial))
 }
