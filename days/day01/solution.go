@@ -2,7 +2,6 @@ package day01
 
 import (
 	"fmt"
-	"log"
 	"strconv"
 
 	"github.com/maartenpeels/aoc-2025/internal/utils"
@@ -19,7 +18,7 @@ func (s *Solution) Part1(input string) (string, error) {
 	s.zeroes = 0
 	s.dial = 50
 
-	log.Println("The dial starts by pointing at " + strconv.Itoa(s.dial))
+	// log.Println("The dial starts by pointing at " + strconv.Itoa(s.dial))
 
 	for _, line := range lines {
 		s.rotateDial(line)
@@ -61,5 +60,5 @@ func (s *Solution) rotateDial(instruction string) {
 		s.zeroes++
 	}
 
-	log.Println("The dial is rotated " + instruction + " to point at " + strconv.Itoa(s.dial))
+	// log.Println("The dial is rotated " + instruction + " to point at " + strconv.Itoa(s.dial))
 }
