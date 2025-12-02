@@ -4,11 +4,13 @@ import (
 	"fmt"
 
 	"github.com/maartenpeels/aoc-2025/days/day01"
+	"github.com/maartenpeels/aoc-2025/days/day02"
 	"github.com/maartenpeels/aoc-2025/internal/solver"
 )
 
 var solvers = map[string]solver.Solver{
 	"01": &day01.Solution{},
+	"02": &day02.Solution{},
 }
 
 func Run(day string, input string) error {

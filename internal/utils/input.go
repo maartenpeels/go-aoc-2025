@@ -10,3 +10,9 @@ func Lines(input string) []string {
 	}
 	return strings.Split(input, "\n")
 }
+
+// SingleLineSplit splits a single line input into an array based on the given separator
+func SingleLineSplit(input string, sep string) []string {
+	input = strings.TrimRight(input, "\n")
+	return strings.Split(input, sep)
+}
