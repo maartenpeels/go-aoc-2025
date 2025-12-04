@@ -1,7 +1,6 @@
 package day02
 
 import (
-	"log"
 	"strconv"
 	"strings"
 
@@ -25,23 +24,12 @@ func (s *Solution) solve(input string, exactTwo bool) (string, error) {
 
 	for _, r := range ranges {
 		parts := strings.Split(r, "-")
-		if len(parts) != 2 {
-			log.Println(parts)
-			log.Fatalln("Error: malformed input")
-			continue
-		}
 
 		lower := strings.TrimSpace(parts[0])
 		higher := strings.TrimSpace(parts[1])
 
-		lowerInt, errLower := strconv.Atoi(lower)
-		higherInt, errHigher := strconv.Atoi(higher)
-
-		if errLower != nil || errHigher != nil {
-			log.Println(lower, higher)
-			log.Fatalln("Error: malformed input")
-			continue
-		}
+		lowerInt, _ := strconv.Atoi(lower)
+		higherInt, _ := strconv.Atoi(higher)
 
 		for i := lowerInt; i <= higherInt; i++ {
 			if s.isInvalid(i, exactTwo) {
