@@ -32,3 +32,13 @@ func SingleLineSplit(input string, sep string) []string {
 	input = strings.TrimRight(input, "\n")
 	return strings.Split(input, sep)
 }
+
+// Grid converts the input into a 2D grid of runes
+func Grid(input string) [][]rune {
+	lines := Lines(input)
+	grid := make([][]rune, len(lines))
+	for i, line := range lines {
+		grid[i] = []rune(line)
+	}
+	return grid
+}
