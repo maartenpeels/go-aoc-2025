@@ -7,6 +7,7 @@ import (
 	"github.com/maartenpeels/aoc-2025/days/day02"
 	"github.com/maartenpeels/aoc-2025/days/day03"
 	"github.com/maartenpeels/aoc-2025/days/day04"
+	"github.com/maartenpeels/aoc-2025/days/day05"
 	"github.com/maartenpeels/aoc-2025/internal/solver"
 )
 
@@ -15,6 +16,7 @@ var solvers = map[string]solver.Solver{
 	"02": &day02.Solution{},
 	"03": &day03.Solution{},
 	"04": &day04.Solution{},
+	"05": &day05.Solution{},
 }
 
 func Run(day string, input string) error {
